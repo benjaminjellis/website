@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for HTML5 for Apple macOS version 5.8.0">
+  <title></title>
+</head>
+<body>
+  {% extends "base.html" %} 
+  {% block title %}
+    {{post.title}} - Benjamin Ells
+  {% endblock %} 
+  {% block maincontent%}
+    <header>
+      <h1> {{post.title}} </h1>
+      <h3 class"lede">{{post.lede}}</h3>
+    </header>
+    {{post.content|safe }}
+  {% endblock %} 
+</body>
+</html>

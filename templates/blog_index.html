@@ -1,0 +1,17 @@
+  {% extends "base.html" %}   
+    {% block title %}
+      Benjamin Ellis - Blog
+  {% endblock %} 
+
+  {% block maincontent%}
+    <h2>Posts</h2>
+    {% for month in months %}
+      <h3>{{ month.month }}</h3>
+      <ul>
+         {% for post in month.posts %}
+            <a href= "/post/{{post.id}}"><li class="post-list">{{ post.title }}</li></a>
+          {% endfor %}
+      </ul>
+    {% endfor %}
+   {% endblock%}
+

@@ -1,0 +1,93 @@
+head {
+  font-family: "Helvetica";
+}
+
+a:link {
+  color: #fcf408;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fcf408;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #fcf408;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Helvetica";
+  background-color: #262626;
+}
+
+p {
+  color: #eff2e4;
+}
+
+h1 {
+  color: #eff2e4;
+  vertical-align: middle;
+}
+
+h2 {
+  color: #eff2e4;
+}
+
+h3 {
+  color: #eff2e4;
+  font-style: italic;
+}
+
+ul {
+  color: #eff2e4;
+}
+
+li {
+  color: #eff2e4;
+}
+
+.flex-container {
+  display: flex;
+  height: 100vh;
+}
+
+.flex-header {
+  display: flex;
+  height: 14vh;
+}
+
+.header-title {
+  flex-grow: 1;
+  align-items: stretch;
+  display: flex;
+  margin-right: 20px;
+}
+
+.header-profile-picture {
+  flex-grow: 20;
+  align-items: stretch;
+}
+
+.sidebar {
+  flex-grow: 1;
+  align-items: stretch;
+  display: flex;
+  margin-right: 20px;
+  background-color: #fcf408;
+}
+
+.main-content {
+  flex-grow: 20;
+  align-items: stretch;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  height: 1px;
+  width: 1px;
+}
