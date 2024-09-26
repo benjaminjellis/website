@@ -1,7 +1,8 @@
 # Personal Website & Blog
 
-## Required env vars
+## Required environment vars
 
 ```shell
 export EC2_IPV4_PUBLIC_DNS=
+export DB_URL=
 ```

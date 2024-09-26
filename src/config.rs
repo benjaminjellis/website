@@ -1,6 +1,5 @@
 use std::net::SocketAddr;
 
-#[allow(dead_code)]
 pub(crate) struct Config {
     pub(crate) db_url: String,
     pub(crate) socket: SocketAddr,
@@ -9,8 +8,9 @@ pub(crate) struct Config {
 impl Config {
     pub(crate) fn new() -> Self {
         let socket: ([u8; 4], u16) = ([0, 0, 0, 0], 4000);
+        let db_url = std::env::var("DB_URL").expect("Missing databse url env var");
         Self {
-            db_url: "postgres://postgres@localhost:5432/blog-db".into(),
+            db_url,
             socket: SocketAddr::from(socket),
         }
     }

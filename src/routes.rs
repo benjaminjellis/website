@@ -1,13 +1,14 @@
 #![allow(unused_imports, dead_code)]
 use crate::{
-    db::types::PostDb,
+    db::{get_10_latest_posts_from_db, get_post_by_id, types::PostDb},
     error::WebsiteError,
-    templates::{BlogIndexTemplate, IndexTemplate, NotFoundTemplate},
+    templates::{BlogIndexTemplate, IndexTemplate, NotFoundTemplate, Post, PostTemplate},
 };
 use askama_axum::IntoResponse;
 use axum::{
     extract::{Path, State},
     http::Uri,
+    response::Redirect,
 };
 use chrono::{Datelike, NaiveDateTime};
 use itertools::Itertools;
@@ -18,10 +19,10 @@ pub(crate) async fn index() -> impl IntoResponse {
     IndexTemplate {}
 }
 
-pub(crate) async fn blog_index(// State(_pool): State<Pool<Postgres>>,
+pub(crate) async fn blog_index(
+    State(pool): State<Pool<Postgres>>,
 ) -> Result<impl IntoResponse, WebsiteError> {
-    // TODO: set this up so we can do pagination, currently this gets the newest 20 posts
-    let posts: Vec<PostDb> = vec![];
+    let posts = get_10_latest_posts_from_db(&pool).await?;
     let posts_with_month = posts
         .into_iter()
         .map(|post| Ok((naive_datetime_to_month_year(post.published).unwrap(), post)))
@@ -33,10 +34,13 @@ pub(crate) async fn blog_index(// State(_pool): State<Pool<Postgres>>,
 }
 
 pub(crate) async fn blog_item(
-    Path(_post_id): Path<Uuid>,
-    // State(_pool): State<Pool<Postgres>>,
+    Path(post_id): Path<Uuid>,
+    State(pool): State<Pool<Postgres>>,
 ) -> Result<impl IntoResponse, WebsiteError> {
-    Ok(())
+    match get_post_by_id(post_id, &pool).await? {
+        Some(post) => Ok(PostTemplate { post: post.into() }),
+        None => Err(WebsiteError::NotFound("Post not found".into())),
+    }
 }
 
 pub(crate) async fn not_found(uri: Uri) -> impl IntoResponse {

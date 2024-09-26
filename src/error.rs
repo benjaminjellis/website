@@ -2,7 +2,7 @@ use color_eyre::eyre;
 use thiserror::Error;
 use tracing::error;
 
-use crate::templates::InternalServerErrorTemplate;
+use crate::templates::{InternalServerErrorTemplate, NotFoundTemplate};
 
 #[derive(Error, Debug)]
 pub(crate) enum WebsiteError {
@@ -12,6 +12,8 @@ pub(crate) enum WebsiteError {
     Sqlx(#[from] sqlx::Error),
     #[error("Failed to format date")]
     DateFormat,
+    #[error("Failed to format date")]
+    NotFound(String),
 }
 
 impl askama_axum::IntoResponse for WebsiteError {
@@ -30,6 +32,7 @@ impl askama_axum::IntoResponse for WebsiteError {
                 message: format!("DB Error: {report}"),
             }
             .into_response(),
+            WebsiteError::NotFound(report) => NotFoundTemplate { uri: report }.into_response(),
         }
     }
 }
