@@ -22,6 +22,10 @@ async fn main() -> Result<()> {
 
     let app = Router::new()
         .nest_service("/static", tower_http::services::ServeDir::new("static"))
+        .nest_service(
+            "/favicon.ico",
+            tower_http::services::ServeFile::new("static/favicon.ico"),
+        )
         .route("/", get(index))
         .route("/blog", get(blog_index))
         .route("/post/:post_id", get(blog_item))
