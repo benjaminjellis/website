@@ -84,6 +84,7 @@ li {
 .main-content {
   flex-grow: 20;
   align-items: stretch;
+  text-wrap: wrap;
 }
 
 .profile-picture {
