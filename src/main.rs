@@ -18,15 +18,14 @@ use config::Config;
 async fn main() -> Result<()> {
     let config = Config::new();
 
-    let pool = db::get_db_pool_and_run_migrations(&config).await?;
+    // let pool = db::get_db_pool_and_run_migrations(&config).await?;
 
     let app = Router::new()
         .nest_service("/static", tower_http::services::ServeDir::new("static"))
         .route("/", get(index))
         .route("/blog", get(blog_index))
         .route("/post/:post_id", get(blog_item))
-        .fallback(not_found)
-        .with_state(pool);
+        .fallback(not_found);
 
     let listener = tokio::net::TcpListener::bind(config.socket).await?;
     axum::serve(listener, app).await?;

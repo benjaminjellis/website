@@ -1,3 +1,4 @@
+#![allow(unused_imports, dead_code)]
 use crate::{
     db::types::PostDb,
     error::WebsiteError,
@@ -17,8 +18,7 @@ pub(crate) async fn index() -> impl IntoResponse {
     IndexTemplate {}
 }
 
-pub(crate) async fn blog_index(
-    State(_pool): State<Pool<Postgres>>,
+pub(crate) async fn blog_index(// State(_pool): State<Pool<Postgres>>,
 ) -> Result<impl IntoResponse, WebsiteError> {
     // TODO: set this up so we can do pagination, currently this gets the newest 20 posts
     let posts: Vec<PostDb> = vec![];
@@ -34,7 +34,7 @@ pub(crate) async fn blog_index(
 
 pub(crate) async fn blog_item(
     Path(_post_id): Path<Uuid>,
-    State(_pool): State<Pool<Postgres>>,
+    // State(_pool): State<Pool<Postgres>>,
 ) -> Result<impl IntoResponse, WebsiteError> {
     Ok(())
 }

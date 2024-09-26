@@ -1,5 +1,6 @@
 use std::net::SocketAddr;
 
+#[allow(dead_code)]
 pub(crate) struct Config {
     pub(crate) db_url: String,
     pub(crate) socket: SocketAddr,

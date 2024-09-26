@@ -3,8 +3,10 @@ use sqlx::{migrate::Migrator, postgres::PgPoolOptions, Pool, Postgres};
 
 use crate::{config::Config, error::WebsiteError};
 
+#[allow(dead_code)]
 pub(crate) static MIGRATOR: Migrator = sqlx::migrate!("./migrations/");
 
+#[allow(dead_code)]
 pub async fn get_db_pool_and_run_migrations(
     config: &Config,
 ) -> Result<Pool<Postgres>, WebsiteError> {
