@@ -4,7 +4,7 @@ pub(crate) mod shared;
 
 use axum::{Router, routing::get};
 use handlers::{blog_overview, blog_post, index};
-use tower_http::services::ServeDir;
+use tower_http::services::{ServeDir, ServeFile};
 
 #[tokio::main]
 async fn main() {
@@ -13,6 +13,7 @@ async fn main() {
         .route("/", get(index))
         .route("/blog", get(blog_overview))
         .route("/blog/{post_id}", get(blog_post))
+        .nest_service("/favicon.ico", ServeFile::new("static/favicon.ico"))
         .nest_service("/static", ServeDir::new("static"));
 
     // run it with hyper on localhost:3000

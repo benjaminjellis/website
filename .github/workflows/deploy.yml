@@ -26,7 +26,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "static/input.css,static/output.css,website,restart_server.sh"
+          source: "static/input.css,static/output.css,static/favicon.ico,website,restart_server.sh"
           target: new_artefacts
       - name: start new binary
         uses: appleboy/ssh-action@v1
