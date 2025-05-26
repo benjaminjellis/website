@@ -4,7 +4,7 @@ PORT_TO_KILL=${1:-3000}
 
 echo "Attempting to kill process on TCP port: $PORT_TO_KILL"
 
-PID=$(lsof -t -i tcp:$PORT_TO_KILL)
+PID=$(lsof -i tcp:3000 -c website | awk 'NR==2 {print $2}')
 
 if [ -z "$PID" ]; then
   echo "No process found listening on TCP port $PORT_TO_KILL."
