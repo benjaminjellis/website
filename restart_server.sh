@@ -21,31 +21,23 @@ else
   fi
 fi
 
-echo "Waiting for 60 seconds"
-sleep 60
+echo "Waiting for 10 seconds"
+sleep 10
 echo "Done waiting"
 
-# Set the maximum number of attempts
 max_attempts=5
 
-# Set a counter for the number of attempts
 attempt_num=1
 
-# Set a flag to indicate whether the command was successful
 success=false
 
-# Loop until the command is successful or the maximum number of attempts is reached
 while [ $success = false ] && [ $attempt_num -le $max_attempts ]; do
   cp new_artefacts/website .
 
-  # Check the exit code of the command
   if [ $? -eq 0 ]; then
-    # The command was successful
     success=true
   else
-    # The command was not successful
     echo "Attempt $attempt_num failed. Trying again..."
-    # Increment the attempt counter
     attempt_num=$((attempt_num + 1))
   fi
 done
@@ -56,7 +48,5 @@ cp -r new_artefacts/static .
 
 rm -rf new_artefacts
 
-echo "Running website using nohup"
 ./website >/dev/null 2>&1 &
-echo "done"
 exit
