@@ -27,7 +27,7 @@ pub(crate) fn layout(title: &str, content: &Markup) -> Markup {
             }
         }
         body."flex h-screen"{
-            aside."bg-yellow-300 w-1/10 flex flex-col"{
+            aside."bg-yellow-200 w-1/10 flex flex-col border-r border-solid border-black-1000"{
                 nav."h-4/5 p-8"{
                    ul."space-y-1" {
                         (nav_item("/", "home"))
@@ -41,12 +41,12 @@ pub(crate) fn layout(title: &str, content: &Markup) -> Markup {
                     h1."text-2xl font-bold text-gray-900 text-center leading-tight"{
                         "Benjamin"
                     }
-                    h1."text-2xl font-bold text-gray-900 text-center leading-tight"{
+                    h1."text-2xl font-bold text-black-900 text-center leading-tight"{
                         "Ellis"
                     }
                 }
             }
-            main."flex-1 p-8 bg-yellow-100"{
+            main."flex-1 p-8 bg-yellow-200"{
                 (content)
             }
         }
