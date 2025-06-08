@@ -2,7 +2,7 @@ use maud::{DOCTYPE, Markup, html};
 
 fn nav_item(link: &str, text: &str) -> Markup {
     html! {
-        li{a."block py-2 text-gray-800 hover:underline text-center font-bold" href=(link) {(text)}}
+        li{a."block py-2 text-black-1000 hover:underline text-center font-bold" href=(link) {(text)}}
     }
 }
 
@@ -38,10 +38,10 @@ pub(crate) fn layout(title: &str, content: &Markup) -> Markup {
                     }
                 }
                div."h-1/5 p-4 flex items-center justify-center flex-col"{
-                    h1."text-2xl font-bold text-gray-900 text-center leading-tight"{
+                    h1."text-2xl font-bold text-black-1000 text-center leading-tight"{
                         "Benjamin"
                     }
-                    h1."text-2xl font-bold text-black-900 text-center leading-tight"{
+                    h1."text-2xl font-bold text-black-1000 text-center leading-tight"{
                         "Ellis"
                     }
                 }
