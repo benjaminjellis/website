@@ -18,6 +18,7 @@ pub(in crate::blog_posts) fn blog_post() -> (&'static str, &'static str, Markup)
             (stockist("Oseyo (Tottenham Court Road)", "https://g.co/kgs/obkpPZe"))
             (stockist("Centre Point Food Store (Tottenham Court Road)", "https://g.co/kgs/ijMbsBg"))
             (stockist("Longdan (Shoreditch)", "https://g.co/kgs/x928kw1"))
+            (stockist("Japan Centre (Leicester Square)", "https://g.co/kgs/TCUZprx"))
         }
     };
     (title, "where_to_find_pocari_sweat_in_london", post)
