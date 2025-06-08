@@ -22,7 +22,7 @@ else
 fi
 
 echo "Waiting for 10 seconds"
-sleep 10
+sleep 60
 echo "Done waiting"
 
 max_attempts=5
