@@ -1,23 +1,22 @@
 #!/bin/bash
 
-PORT_TO_KILL=${1:-3000}
+echo "Attempting to kill 'website' process"
 
-echo "Attempting to kill process on TCP port: $PORT_TO_KILL"
-
-PID=$(lsof -i tcp:3000 -c website | awk 'NR==2 {print $2}')
+PID=$(pgrep website)
 
 if [ -z "$PID" ]; then
-  echo "No process found listening on TCP port $PORT_TO_KILL."
+  echo "No process found with name 'website' "
 else
-  echo "Found process with PID: $PID on port $PORT_TO_KILL."
+  echo "Found process 'website' with PID: $PID"
   echo "Attempting to forcefully kill PID: $PID..."
   kill -9 "$PID"
 
-  if ! lsof -t -i tcp:$PORT_TO_KILL &>/dev/null; then
-    echo "Process with PID $PID on port $PORT_TO_KILL has been killed successfully."
+  if ! pgrep website &>/dev/null; then
+    echo "Process 'website' successfully killed"
   else
-    echo "Warning: Process with PID $PID on port $PORT_TO_KILL might not have been killed."
+    echo "Warning: Process 'webite' might not have been killed."
     echo "You may need to investigate manually."
+    exit 1
   fi
 fi
 
