@@ -5,19 +5,16 @@ on:
     branches: [main]
 
 jobs:
-  test_lint_and_build: 
-    runs-on: ubuntu-24.04-arm
+  test:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: |
-          rustup default 1.87.0
-          rustup component add clippy
-          rustup component add rustfmt
-      - name: lint
-        run: cargo clippy -- -D warnings
-      - name: fmt
-        run: cargo fmt -- --check
-      - name: Test 
-        run: cargo test
-      - name: Build
-        run: cargo build
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: "27.1.2"
+          gleam-version: "1.12.0"
+          rebar3-version: "3"
+          # elixir-version: "1"
+      - run: gleam deps download
+      - run: gleam test
+      - run: gleam format --check src test
