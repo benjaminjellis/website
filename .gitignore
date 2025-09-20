@@ -1,4 +1,7 @@
-/target
+*.beam
+*.ez
+/build
+erl_crash.dump
 node_modules
 .DS_Store
 /static/output.css
