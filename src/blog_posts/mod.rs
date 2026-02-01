@@ -23,7 +23,7 @@ pub(crate) static BLOG_POSTS: LazyLock<[BlogPost; 1]> =
 
 pub(in crate::blog_posts) fn paragraph(text: &'static str) -> Markup {
     html! {
-        p."text-justify"{(text)}
+        p."text-justify underline decoration-4 "{(text)}
         br;
     }
 }

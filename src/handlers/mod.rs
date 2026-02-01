@@ -6,44 +6,60 @@ use crate::{
     shared::{four_oh_four, layout},
 };
 
+pub(crate) use crate::photos::photos;
+
 pub(crate) async fn index() -> Markup {
     let content = html! {
-        h2."font-bold" {
-            bold{ "about me:" }
-        }
-        p {
+        h1."text-4xl font-extrabold tracking-tight" { "ABOUT" }
+        p."mt-4 text-lg" {
             "in my day to day I'm a backend engineer, primarily writing Rust at a stealth fintech startup"
         }
-        br;
-        h2."font-bold" {
-            "some projects of varying usefulnesss:"
+
+        hr."my-8 border-0 border-t-4 border-black";
+
+        h2."text-xl font-extrabold" { "PROJECTS" }
+        ul."mt-3 list-disc pl-6 space-y-2"{
+            li {
+                 a."underline decoration-4 hover:no-underline" href="https://github.com/benjaminjellis/mond"{
+                    "mond"
+                }
+                " — an experimental functional language with a Lisp-inspired syntax and ML-style static types that targets the BEAM"
+            }
+            li {
+                a."underline decoration-4 hover:no-underline" href="https://github.com/benjaminjellis/gegen"{
+                    "gegen"
+                }
+                " — football scores and fixtures from across the world, in the terminal"
+            }
+            li {
+                a."underline decoration-4 hover:no-underline" href="https://github.com/benjaminjellis/cherry2"{
+                    "cherry"
+                }
+                " — a coffee logbook to keep track of your brews (WIP)"
+            }
         }
-        ul."list-disc list-inside"{
-            li."italic"{ a."hover:underline" href="https://github.com/benjaminjellis/gegen"{"gegen: football scores and fixtures from across the world, in the terminal "}}
-            li."italic"{ a."hover:underline" href="https://github.com/benjaminjellis/cherry2"{"cherry: a a coffee logbook to help you keep track of your brews (currently WIP)"}}
+
+        hr."my-8 border-0 border-t-4 border-black";
+
+        h2."text-xl font-extrabold" { "CURRENT" }
+        ul."mt-3 list-disc pl-6"{
+            li { "backend engineer @ stealth fintech startup" }
         }
-        br;
-        h2."font-bold"{
-            "current:"
-        }
-        ul class="list-disc list-inside"{
-            li {"backend engineer @ stealth fintech startup"}
-        }
-        br;
-        h2."font-bold"{
-            "previous:"
-        }
-        ul class="list-disc list-inside"{
-            li {"data scientist @ Capgemini Invent"}
-            li {"financial engineer @ IHS Markit"}
-            li {"consultant @ EY"}
+
+        hr."my-8 border-0 border-t-4 border-black";
+
+        h2."text-xl font-extrabold" { "PREVIOUS" }
+        ul."mt-3 list-disc pl-6 space-y-1"{
+            li { "data scientist @ Capgemini Invent" }
+            li { "financial engineer @ IHS Markit" }
+            li { "consultant @ EY" }
         }
     };
 
     layout("benjamin ellis", &content)
 }
 
-pub(crate) async fn blog_overview() -> Markup {
+pub(crate) async fn blog_index() -> Markup {
     let post = BLOG_POSTS
         .iter()
         .map(|post| (post.title, post.url))
