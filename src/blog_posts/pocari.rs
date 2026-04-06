@@ -17,6 +17,8 @@ pub(in crate::blog_posts) fn blog_post() -> (&'static str, &'static str, Markup)
         ul."list-disc list-inside"{
             (stockist("Oseyo (Waterloo)", "https://g.co/kgs/B2RCbGm"))
             (stockist("Oseyo (Tottenham Court Road)", "https://g.co/kgs/obkpPZe"))
+            (stockist("Oseyo (China Town)", "https://share.google/auvG4k0zqaeQPNc8e"))
+            (stockist("Seoul Plaza (China Town)", "https://share.google/ssup1FM4jyUlw0H5F"))
             (stockist("Centre Point Food Store (Tottenham Court Road)", "https://g.co/kgs/ijMbsBg"))
             (stockist("Longdan (Shoreditch)", "https://g.co/kgs/x928kw1"))
             (stockist("Japan Centre (Leicester Square)", "https://g.co/kgs/TCUZprx"))
