@@ -11,9 +11,6 @@ pub(crate) use crate::photos::photos;
 pub(crate) async fn index() -> Markup {
     let content = html! {
         h1."text-4xl font-extrabold tracking-tight" { "ABOUT" }
-        p."mt-4 text-lg" {
-            "in my day to day I'm a backend engineer, primarily writing Rust at a stealth fintech startup"
-        }
 
         hr."my-8 border-0 border-t-4 border-black";
 
@@ -41,15 +38,11 @@ pub(crate) async fn index() -> Markup {
 
         hr."my-8 border-0 border-t-4 border-black";
 
-        h2."text-xl font-extrabold" { "CURRENT" }
-        ul."mt-3 list-disc pl-6"{
-            li { "backend engineer @ stealth fintech startup" }
-        }
-
         hr."my-8 border-0 border-t-4 border-black";
 
         h2."text-xl font-extrabold" { "PREVIOUS" }
         ul."mt-3 list-disc pl-6 space-y-1"{
+            li { "backend engineer @ stealth fintech startup" }
             li { "data scientist @ Capgemini Invent" }
             li { "financial engineer @ IHS Markit" }
             li { "consultant @ EY" }
